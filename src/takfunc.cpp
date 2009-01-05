@@ -141,7 +141,7 @@ static void GetID3Tags(TAKSTREAM* stream){
 			memcpy(stream->info.ID3V1 + 93,valueAnsi,min(readedAnsi,4));
 		}else if( strcmp(key,APE_TAG_FIELD_COMMENT) == 0 ){
 			BYTE* t= (BYTE*)HeapAlloc(GetProcessHeap(),0,4+readed);
-			strcpy_s((char*)t,4,"JPN");// J,P,N,(0)
+			strcpy_s((char*)t,4,"ENG");// Not correct for other languages, but I have no idea to detect language.
 			memcpy_s((char*)t+4,readed,value,readed);
 			readed+=4;
 			stream->info.ID3V2 = (BYTE*)HeapReAlloc(GetProcessHeap(),0,stream->info.ID3V2,tagsize+11+readed);
